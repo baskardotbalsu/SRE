@@ -1,0 +1,31 @@
+---
+        - name: test systemd services
+          hosts: rhel_vm_host
+          vars:
+                service_name: docker.service
+                systemctl_arg1: start
+        
+          tasks:
+
+          - name: Populate service facts
+            ansible.builtin.service_facts:
+
+          - name: Print service facts
+            ansible.builtin.debug:
+                var: ansible_facts.services[ "{{ service_name }}" ]
+
+          - name: Check service status of "{{ service_name }}" before "{{ systemctl_arg1 }}"
+#            command: echo "Service {{ service_name }} is present in the system"
+            command: systemctl status "{{ service_name }}"
+            when: ansible_facts.services[ "{{ service_name }}" ].name == "{{ service_name }}"
+            ignore_errors: true
+
+          - name: Perform the command "{{ systemctl_arg1 }}" on the service with systemctl 
+            command: systemctl "{{ systemctl_arg1 }}"  "{{ service_name }}"
+            when: ansible_facts.services[ "{{ service_name }}" ].name == "{{ service_name }}"
+            ignore_errors: true
+
+          - name: Check service status of "{{ service_name }}" once again after "{{ systemctl_arg1 }}"
+            command: systemctl status "{{ service_name }}"
+            when: ansible_facts.services[ "{{ service_name }}" ].name == "{{ service_name }}"
+            ignore_errors: true

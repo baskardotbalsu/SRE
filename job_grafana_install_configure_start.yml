@@ -1,0 +1,32 @@
+---
+   - name: Grafana installation, configuration and startup
+     hosts: rhel_vm_host
+     become: yes
+     become_method: sudo
+     vars: 
+        grafana_install_loc: /opt/grafana
+        os_name: linux
+        arch: amd64
+        grafana_version: 7.4.3
+     
+     tasks:
+
+     - name: copy the grafana repo file to dest server
+       copy:
+           src: grafana/grafana.repo
+           dest: /etc/yum.repos.d/grafana.repo
+           mode: 0740
+       ignore_errors: yes
+
+     - name: install grafana from /etc/yum.repos.d/grafana.repo using yum
+       yum:
+         name: grafana
+         state: present
+       ignore_errors: yes
+
+     - name: Start grafana service
+       systemd: 
+            name: grafana-server
+            state: started
+            enabled: yes
+       ignore_errors: yes

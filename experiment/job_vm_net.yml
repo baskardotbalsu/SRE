@@ -1,0 +1,14 @@
+---
+   - name: Get network IP address
+     hosts: 127.0.0.1
+
+     tasks:
+
+     - name: get virt_net facts
+       virt_net:
+          command: facts
+
+#     - name: echo the network facts
+#       command: echo "{{ ansible_libvirt_networks['default']['dhcp_leases'] }}"
+
+     - debug: var=ansible_libvirt_networks['default']['dhcp_leases']
