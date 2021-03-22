@@ -1,6 +1,6 @@
 # CSI-ZG628T-Dissertation
-BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work
-ABSTRACT
+BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work<br>
+<b>ABSTRACT</b><br>
 Reliability of a website is a quality that is measured based on user experience. It appears to be simple phenomenon from the outside, but it takes constant effort in steering the moving parts of the systems and software behind the scene. Automation, monitoring and alerting of the system functions and effective communication among the systems and support personnel are few of the foundational requirements that attempts to solve the problem of site reliability. 
 
 The choice of tools used to meet the above requirements becomes crucial to deploy such an eco-system. In this dissertation work, there is an attempt to study Ansible, a Python module, as the Automation tool and how it helps to eliminate the toil [4] due to tasks that are manual, repetitive, automatable, tactical, devoid of enduring value, and that scales linearly as a service grows. The work also involves studying the interfacing capabilities of ansible with tools that helps in monitoring the system metrics and visualize the data captured for analysis. 
