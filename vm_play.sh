@@ -118,6 +118,8 @@ echo "Installing prometheus and node_exporter for collecting TCP data."
 
 ansible-playbook -i ./hosts job_prometheus_install_configure_start.yml --ask-pass -K
 
+sleep 5
+
 echo "Installation of prometheus and node_exporter for collecting TCP data completed."
 
 # Install, configure and start grafana for visualization of the collected data
@@ -125,6 +127,8 @@ echo "Installation of prometheus and node_exporter for collecting TCP data compl
 echo "Installing grafana for visualizing TCP data."
 
 ansible-playbook -i ./hosts job_grafana_install_configure_start.yml --ask-pass -K
+
+sleep 5
 
 echo "Installation of grafana for visualizing TCP data completed."
 
