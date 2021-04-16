@@ -1,0 +1,109 @@
+SITE RELIABILITY
+
+A Site can be defined as any useful application or software available for use over computer networks which is
+accessible over the Internet or private interconnected networks.
+
+Understanding Reliability of a Site:
+
+Reliability is directly associated with user experience. 
+
+From the perspective of the service provider, they would have to satisfy the expectations of the end users and facilitate the best experience.
+
+A variety of factors are considered to address the problem of reliability. 
+
+	- availability (Is the application available everytime accessed by the user? )
+	- scalability (how flexible is the system when there is a need to address an increase in the number of users or resource requirements?)
+	- recoverability (how quickly the system can recover from a failure?)
+	- maintainability (how effectively application changes can be incorporated?)
+	- security (What is the level confidentiality and integrity that the system provides to user's data within the systems and the network?).
+	- elasticity (how robust the system responds to sudden surge or drop in the processing load?).
+	- economic value (what is the cost savings for the IT service provider?).
+
+A reliable site is one where the users of the sites would fall back for the services of the service provider. 
+
+Sites are considered reliable from user experience perspective, which becomes the primary goal for anyone providing information services.
+
+When such reliable services are realized with the hosted websites, then the sites are meant to have an added quality called as Site Reliability.
+
+The art of practicing the principles to meet the expectations from reliability perspective can be named as Site Reliability Engineering.
+
+
+DISSERTATION TITLE: Study of Ansible as an automation tool for Site Reliability
+
+PROJECT OBJECTIVE:
+
+Address the problem of site reliability through 
+
+	- Automation of tasks that are manual, repetitive, automatable, tactical, devoid of enduring value, and that scales linearly as a service grows. In IT industry terms this could be called as eliminating the toil or backlogs.
+
+	- Measurement and Interpretation of the system data which is essential in a system that automatically adjusts its resources and configurations, there by meet the demands of the end users. This could be termed as the Observability principle in Site Reliability.
+
+	- Alerting the support personnel and experts and effective communication among them, about the system malfunctioning and take corrective actions for speedy recovery. This functionality is normally categorized as Event Management or Incident Management based on the severity of the issue.
+
+SCOPE OF WORK:
+
+	Study, practice and document how Ansible would help to automate system functions and reduce toil using the rich set of ansible modules.
+	System Monitoring and Visualization of the metrics using Prometheus and Grafana respectively
+	Alerting when there is anamoly found in the system functionality by sending an email to the systems support. 
+
+
+USE CASES:
+
+USE CASE 1: Automate the Hosting of a TCP Echo Server, within docker container running on top of a Linux VM, using Ansible
+
+USE CASE 2: Monitoring the system metrics with Prometheus, Visualization and Alerting with Grafana. 
+
+Assumptions:
+
+	- Availability of the operating system image in the local system storage. The pre-built OS image is used to create the VM 
+
+	- Network interfaces are well defined and configured on both host and virtual operating systems
+
+	- VM would be readily connecting to the tool repositories, which includes RHEL repositories, Prometheus and Grafana download locations, etc.
+
+	- Network firewall rules are enabled so that access to the TCP ports used for prometheus (9090), node_exporter (9100) and grafana (3000) is available to the host Linux machine.
+
+	- SMTP configuration is setup on the Linux VM in order to send the alert messages from Grafana to the support personnel.
+
+
+USE CASE 1 FLOW DIAGRAM:
+
+	DEMO OF AUTOMATION
+
+	DEMO OF TCP ECHO CLIENT COMMUNICATION WITH TCP ECHO SERVER
+
+USE CASE 2
+
+	DEMO OF SYSTEM AND TCP METRICS CAPTURED BY PROMETHEUS
+	DEMO OF VISUALIZATION OF GRAFANA DASHBOARDS FOR SYSTEM METRICS, TCP ECHO SERVER RUN STATUS, TCP ECHO SERVER SOCKET LISTEN STATUS
+	DEMO OF ALERTING THROUGH EMAIL WHEN TCP ECHO SERVER IS DOWN OR SOCKER NOT LISTENING
+
+PROJECT OBSERVATIONS
+
+	Automation of the repetitive tasks eliminate toil. 
+		Addresses scalability, elasticity, maintainabiity and economy value.  
+
+	Monitoring address the observability requirements. 
+	Visualization and Alerting address the event management requirements. 
+		Addresses availablity and recoverability, 
+
+WHAT IS NOT ADDRESSED
+
+	Security requirements of the website is not part of the scope. 
+	Porting the automation is not in scope for other hypervisors, VMs and container types. 
+	
+
+BENEFITS AND FUTURE WORK
+
+	Study with TCP Echo Server is fundamental to study any server that run over a TCP protoco
+	This project can be used as the reference study on Site Reliability of web sites. 
+	The extensibility of the project is such that, TCP Echo Server can be replaced with any other server like web servers, application servers, etc during study.
+	
+	Future work on this project would be creating a public repository where the entire project can be reused in real time systems.
+		Scope to include other open source VM images for centos, ubuntu, etc. 
+		Create Dockerfile plugins to replace TCP Echo server with other web servers and application servers. 
+		Further study and continued research with TCP/IPv4 network protocols with the existing lab environment
+
+
+	
+	
