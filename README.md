@@ -1,7 +1,7 @@
 # CSI-ZG628T-Dissertation
 BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=J3yoHYbJeJs "CSI-ZG628T-Dissertation")
+[![DISSERTATION VIDEO](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=J3yoHYbJeJs "CSI-ZG628T-Dissertation")
 
 # ABSTRACT
 
