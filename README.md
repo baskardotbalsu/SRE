@@ -1,6 +1,13 @@
 # CSI-ZG628T-Dissertation
 BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work
 
+# DISSERTATION DEMONSTRATION VIDEO
+***Click the video link shown below***<br><br>
+[![DISSERTATION VIDEO](http://img.youtube.com/vi/J3yoHYbJeJs/1.jpg)](http://www.youtube.com/watch?v=J3yoHYbJeJs "DEMO-CSI-ZG628T-Dissertation") <br>
+
+Refer to the dissertation documentation https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/doc/Pre-finalReport/v0.5/2019HT66015PFRv0.5.pdf for complete details of the project. <br>
+
+
 # ABSTRACT
 
 Reliability of a website is a quality that is measured based on user experience. It appears to be simple phenomenon from the outside, but it takes constant effort in steering the moving parts of the systems and software behind the scene. Automation, monitoring and alerting of the system functions and effective communication among the systems and support personnel are few of the foundational requirements that attempts to solve the problem of site reliability. 
