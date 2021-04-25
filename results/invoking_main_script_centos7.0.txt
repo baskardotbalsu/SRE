@@ -1,13 +1,4 @@
-[baskar@oc6761813003 ansible_centos]$ ./vm_play.sh
-***************************************************************************
-Use Case - hosting a TCP Echo server within docker container using Ansible.
-***************************************************************************
-*****************************************************
-Starting the virtual machine from the pre-built image
-Hosted Virtualization driver - qemu-kvm
-VM OS - centos7.0
-*****************************************************
-./vm_play.sh: line 135: syntax error: unexpected end of file
+
 [baskar@oc6761813003 ansible_centos]$ vi vm_play.sh
 [baskar@oc6761813003 ansible_centos]$ ./vm_play.sh
 ***************************************************************************
