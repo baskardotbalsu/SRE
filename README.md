@@ -8,7 +8,7 @@ BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work
 Refer to the dissertation documentation https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/doc/Pre-finalReport/v0.8/2019HT66015PFRv0.8.pdf for complete details of the project. <br>
 
 # Automation Solution is now tested with centos7.0. 
-Test results available [![here]](https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/results/invoking_main_script_centos7.0.txt "Test results centos7.0") <br>
+Test results available [[here]](https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/results/invoking_main_script_centos7.0.txt "Test results centos7.0") <br>
 
 # ABSTRACT
 
