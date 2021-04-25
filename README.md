@@ -7,6 +7,8 @@ BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work
 
 Refer to the dissertation documentation https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/doc/Pre-finalReport/v0.8/2019HT66015PFRv0.8.pdf for complete details of the project. <br>
 
+# Automation Solution is now tested with centos7.0. 
+Test results available [![here]](https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/results/invoking_main_script_centos7.0.txt "Test results centos7.0") <br>
 
 # ABSTRACT
 
@@ -22,4 +24,3 @@ The extensibility of the project is such that, TCP Echo Server can be replaced w
 
 On the other hand, the time needed to build, develop or extend web server or application servers, with voluminous code base is time consuming. In this case, complex system characteristics involving application layer protocols like HTTP, TLS, SOAP, etc are generally considered for study. This study with TCP Echo Server is analogous to study of the implementation of Data Encryption Standard (DES) in field of Cryptography, the fundamental block cipher algorithm, before studying the more complex algorithms like Advanced Encryption Standard. With this approach, the dissertation gives a way for a wide range of options for future study by keeping this project as the reference study on Site Reliability of web sites.  
 
-<blink> Solution now tested with centos7.0. Link - </blink>
