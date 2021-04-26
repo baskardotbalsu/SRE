@@ -3,7 +3,7 @@ BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work
 
 # DISSERTATION DEMONSTRATION VIDEO
 ***Click the video link shown below***<br><br>
-[![DISSERTATION VIDEO](https://i9.ytimg.com/vi/LHNCHVT70Zk/mq1.jpg?sqp=CLi7loQG&rs=AOn4CLDkqlCaQhS13EItZ5ddFroQp1vgzw)](https://youtu.be/LHNCHVT70Zk "DEMO-CSI-ZG628T-Dissertation") <br>
+[![DISSERTATION VIDEO](https://i9.ytimg.com/vi/LHNCHVT70Zk/mq1.jpg?sqp=CLT2mYQG&rs=AOn4CLDrQJ6y2QzfrJOTKEy4C2m8cfU_Ag)](https://youtu.be/LHNCHVT70Zk "DEMO-CSI-ZG628T-Dissertation") <br>
 
 Refer to the dissertation documentation
 https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/doc/FinalReport/soft-submit/FinalReport.pdf
