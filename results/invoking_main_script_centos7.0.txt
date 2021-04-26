@@ -1,4 +1,3 @@
-
 [baskar@oc6761813003 ansible_centos]$ ./vm_play.sh
 ***************************************************************************
 Use Case - hosting a TCP Echo server within docker container using Ansible.
