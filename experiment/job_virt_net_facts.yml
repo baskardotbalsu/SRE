@@ -1,0 +1,14 @@
+---
+        - name: get network info using virt_net
+          hosts: 127.0.0.1
+
+          tasks:
+
+          - name: get virt_net facts 
+            virt_net:
+                command: facts
+            register: virt_net_facts
+
+          - name: print ip address
+            command: echo "{{ virt_net_facts.default.dhcp_leases }}"
+

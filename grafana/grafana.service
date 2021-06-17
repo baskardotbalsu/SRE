@@ -1,0 +1,9 @@
+[Unit]
+Description=Grafana service
+After=network.target
+
+[Service]
+ExecStart=/opt/grafana/grafana-7.4.3/bin/grafana-server
+
+[Install]
+WantedBy=multi-user.target

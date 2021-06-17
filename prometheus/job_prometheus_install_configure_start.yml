@@ -1,0 +1,62 @@
+     become: yes
+     become_method: sudo
+     vars: 
+        prometheus_install_loc: /opt/prometheus
+     
+     tasks:
+
+     - name: remove existing prometheus installation
+       command: rm -R "{{ prometheus_instal_loc }}"/prometheus-*.linux-amd64 "{{ prometheus_instal_loc }}"/node_exporter-*.linux-amd64
+       ignore_errors: yes
+
+
+     - name: create prometheus install directory
+       command: mkdir -p "{{ prometheus_install_loc }}" 
+       ignore_errors: yes
+        
+     - name: copy the prometheus to dest server
+       get_url:
+           url: https://github.com/prometheus/prometheus/releases/download/v2.25.0/prometheus-2.25.0.linux-amd64.tar.gz
+           dest: "{{ prometheus_install_loc }}/prometheus-2.25.0.linux-amd64.tar.gz"
+           mode: 0754
+       ignore_errors: yes
+
+     - name: extract prometheus tar file
+       command: tar xvfz prometheus-2.25.0.linux-amd64.tar.gz
+       args:
+          chdir: "{{ prometheus_install_loc }}"
+       ignore_errors: yes
+
+     - name: copy node exporter to dest server
+       get_url:
+           url: https://github.com/prometheus/node_exporter/releases/download/v*/node_exporter-1.1.1.linux-amd64.tar.gz
+           dest: "{{ prometheus_install_loc }}/node_exporter-1.1.1.linux-amd64.tar.gz"
+           mode: 0754
+       ignore_errors: yes
+
+     - name: extract node_exporter tar file
+       command: tar xvfz node_exporter-1.1.1.linux-amd64.tar.gz
+       args: 
+           chdir: "{{ prometheus_install_loc }}"
+       ignore_errors: yes
+
+     - name: copy the prometheus.yml
+       copy:
+           src: prometheus/prometheus.yml 
+           dest: "{{ prometheus_install_loc }}"/prometheus-2.25.0.linux-amd64/prometheus.yml
+           mode: 0754
+       ignore_errors: yes
+
+       
+     - name: Start Prometheus
+       command: ./prometheus --config=prometheus.xml &
+       args:
+            chdir: "{{ prometheus_install_loc }}"/prometheus-2.25.0.linux-amd64
+       ignore_errors: yes       
+
+     - name: Start node_exporter
+       command: ./node_exporter &
+       args: 
+            chdir: "{{ prometheus_install_loc }}"/node_exporter-1.1.1.linux-amd64
+       ignore_errors: yes
+

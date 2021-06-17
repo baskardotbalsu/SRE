@@ -1,0 +1,4 @@
+FROM docker.io/centos:latest
+WORKDIR /app
+COPY . .
+CMD ["ping","172.17.0.2"]

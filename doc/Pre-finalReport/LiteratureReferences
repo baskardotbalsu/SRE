@@ -1,0 +1,25 @@
+[1] Ansible references – https://github.com/ansible/ansible, https://docs.ansible.com/
+[2] Integration with DevOps tools: https://www.ansible.com/integrations/devops-tools	
+[3] Site Reliability Engineering principles and practises – https://sre.google/sre-book/part-II-principles/, https://sre.google/sre-book/part-III-practices/
+[4] Eliminating Toil - https://sre.google/sre-book/eliminating-toil
+[5] GitHub page for Linux - https://github.com/torvalds/linux
+[6] Linux manual pages - https://www.kernel.org/doc/man-pages/
+[7] libvirt reference - https://libvirt.org/
+[8] Linux KVM website - https://www.linux-kvm.org/page/Main_Page
+[9] QEMU wiki - https://wiki.qemu.org/Main_Page 
+[10] QEMU website - https://www.qemu.org/
+[11] TCP RFC 793 - https://tools.ietf.org/html/rfc793
+[12] The Linux Programming Interface book by Michael Kerrisk - https://www.man7.org/tlpi/
+[13] GNU Compiler Collection (GCC) webpage - http://gcc.gnu.org/onlinedocs/gcc/
+[14] Python website - https://www.python.org/
+[15] Visualize Prometheus data with Grafana - https://www.openlogic.com/blog/how-visualize-prometheus-data-grafana
+[16] GitHub page for Prometheus - https://github.com/prometheus/prometheus
+[17] Prometheus web site  - https://prometheus.io/
+[18] Wikipedia page for Grafana - https://en.wikipedia.org/wiki/Grafana
+[19] GitHub page for Grafana - https://github.com/grafana/grafana
+[20] Overview of Docker - https://docs.docker.com/get-started/overview
+[21[ Overview of Prometheus - https://prometheus.io/docs/introduction/overview/
+[22[ How to make docker container use local network interface - https://docs.docker.com/network/network-tutorial-host/
+[23[ docker module in ansible - https://docs.ansible.com/ansible/2.9/modules/docker_image_module.html#docker-image-module
+[24] ansible systemd module - https://docs.ansible.com/ansible/2.9/modules/systemd_module.html#systemd-module
+[25] Michael Kerrisk, The Linux Programming Interface, 2021, O’Reilly Media, Inc. Chapter 60. "SOCKETS: SERVER DESIGN"

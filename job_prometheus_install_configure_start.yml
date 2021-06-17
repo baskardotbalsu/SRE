@@ -1,0 +1,105 @@
+---
+   - name: Prometheus installation, configuration and startup
+     hosts: rhel_vm_host
+     become: yes
+     become_method: sudo
+     vars: 
+        prometheus_install_loc: /opt/prometheus
+        os_name: linux
+        arch: amd64
+        prometheus_version: 2.25.0
+        node_exporter_version: 1.1.1
+     
+     tasks:
+
+     - name: remove existing prometheus installation
+       command: rm -R "{{ prometheus_install_loc }}/prometheus-{{ prometheus_version }}.{{ os_name }}-{{ arch }}" "{{ prometheus_install_loc }}/node_exporter-{{ node_exporter_version }}.{{ os_name }}-{{ arch }}"
+       ignore_errors: yes
+
+
+     - name: create prometheus install directory
+       command: mkdir -p "{{ prometheus_install_loc }}" 
+       ignore_errors: yes
+        
+     - name: copy the prometheus to dest server
+       get_url:
+           url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.{{ os_name }}-{{ arch}}.tar.gz"
+           dest: "{{ prometheus_install_loc }}/prometheus-{{ prometheus_version }}.{{ os_name }}-{{ arch }}.tar.gz"
+           mode: 0754
+       ignore_errors: yes
+
+     - name: extract prometheus tar file
+       command: "tar xvfz prometheus-{{ prometheus_version }}.{{ os_name }}-{{ arch }}.tar.gz"
+       args:
+          chdir: "{{ prometheus_install_loc }}"
+       ignore_errors: yes
+
+     - name: copy node exporter to dest server
+       get_url:
+           url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.{{ os_name }}-{{ arch }}.tar.gz"
+           dest: "{{ prometheus_install_loc }}/node_exporter-{{ node_exporter_version }}.{{ os_name }}-{{ arch }}.tar.gz"
+           mode: 0754
+       ignore_errors: yes
+
+     - name: extract node_exporter tar file
+       command: "tar xvfz node_exporter-{{ node_exporter_version }}.{{ os_name }}-{{ arch }}.tar.gz"
+       args: 
+           chdir: "{{ prometheus_install_loc }}"
+       ignore_errors: yes
+
+     - name: copy the prometheus.yml
+       copy:
+           src: prometheus/prometheus.yml 
+           dest: "{{ prometheus_install_loc }}/prometheus-{{ prometheus_version }}.{{ os_name }}-{{ arch }}/prometheus.yml"
+           mode: 0754
+       ignore_errors: yes
+
+     - name: remove prometheus and node_exporter service files
+       file:
+          path: "{{ item.service_file }}"
+          state: absent
+       loop:
+         - { service_file: /etc/systemd/system/prometheus.service }
+         - { service_file: /etc/systemd/system/node_exporter.service }
+
+     - name: copy prometheus service file
+       copy:
+          src: prometheus/prometheus.service
+          dest: /etc/systemd/system/prometheus.service
+          mode: 0740
+       ignore_errors: yes
+
+     - name: copy node_exporter service file
+       copy:
+          src: prometheus/node_exporter.service
+          dest: /etc/systemd/system/node_exporter.service
+          mode: 0740
+       ignore_errors: yes
+
+     - name: Start prometheus service
+       systemd: 
+            name: prometheus
+            state: started
+            enabled: yes
+       ignore_errors: yes
+
+     - name: Start node_exporter service
+       systemd: 
+            name: node_exporter
+            state: started
+            enabled: yes
+       ignore_errors: yes
+
+       
+#     - name: Start Prometheus
+#       command: ./prometheus --config.file=prometheus.xml &
+#       args:
+#            chdir: "{{ prometheus_install_loc }}/prometheus-{{ prometheus_version }}.{{ os_name }}-{{ arch }}"
+#       ignore_errors: yes       
+
+#     - name: Start node_exporter
+#       command: ./node_exporter &
+#       args: 
+#            chdir: "{{ prometheus_install_loc }}/node_exporter-{{ node_exporter_version }}.{{ os_name }}-{{ arch }}"
+#       ignore_errors: yes
+

@@ -1,0 +1,295 @@
+[baskar@oc6761813003 ansible_centos]$ ./vm_play.sh
+***************************************************************************
+Use Case - hosting a TCP Echo server within docker container using Ansible.
+***************************************************************************
+*****************************************************
+Starting the virtual machine from the pre-built image
+Hosted Virtualization driver - qemu-kvm
+VM OS - centos7.0
+*****************************************************
+127.0.0.1 | SUCCESS => {
+    "changed": false, 
+    "start": 0
+}
+Wait for about a minute until vm starts 
+centos7.0 7 VM started
+Provide the ip address of rhel VM you would like to proceed using the below list
+            "hostname": "rhel_kvm", 
+            "ipaddr": "192.168.122.142", 
+            "hostname": null, 
+            "ipaddr": "192.168.122.172", 
+IP Address:
+192.168.122.172
+IP4 Address of the RHEL VM is 192.168.122.172
+
+
+*****************************************************
+ping_pong check for RHEL VM
+*****************************************************
+pinging the 192.168.122.172 rhel vm. please provide your password for SSH login
+Using /etc/ansible/ansible.cfg as config file
+SSH password: 
+192.168.122.172 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+******************************************************
+ Install docker image hosting a TCP Echo server
+******************************************************
+Installing docker on the rhel vm  192.168.122.172. Provide your password for SSH login
+SSH password: 
+BECOME password[defaults to SSH password]: 
+192.168.122.172 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "changes": {
+        "installed": [], 
+        "updated": []
+    }, 
+    "msg": "", 
+    "rc": 0, 
+    "results": [
+        "All packages providing docker are up to date", 
+        ""
+    ]
+}
+Starting docker.service on 192.168.122.172. Provide SSH password for authentication
+SSH password: 
+BECOME password[defaults to SSH password]: 
+
+PLAY [test systemd services] ******************************************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [Populate service facts] *****************************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [Print service facts] ********************************************************************************************************************************************
+ok: [192.168.122.172] => {
+    "ansible_facts.services[ \"docker.service\" ]": {
+        "name": "docker.service", 
+        "source": "systemd", 
+        "state": "running", 
+        "status": "enabled"
+    }, 
+    "changed": false
+}
+
+TASK [Check service status of "docker.service" before "start"] ********************************************************************************************************
+[WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: ansible_facts.services[ "{{ service_name }}" ].name
+== "{{ service_name }}"
+changed: [192.168.122.172]
+
+TASK [Perform the command "start" on the service with systemctl] ******************************************************************************************************
+[WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: ansible_facts.services[ "{{ service_name }}" ].name
+== "{{ service_name }}"
+changed: [192.168.122.172]
+
+TASK [Check service status of "docker.service" once again after "start"] **********************************************************************************************
+[WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: ansible_facts.services[ "{{ service_name }}" ].name
+== "{{ service_name }}"
+changed: [192.168.122.172]
+
+TASK [Enable or Disable service based on enable_disable_flag variable] ************************************************************************************************
+ok: [192.168.122.172]
+
+PLAY RECAP ************************************************************************************************************************************************************
+192.168.122.172            : ok=7    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+Copying the docker files for TCP server to rhel vm. Provide SSH password for authentication
+SSH password: 
+192.168.122.172 | SUCCESS => {
+    "changed": false, 
+    "dest": "/home/baskar/ansible/", 
+    "src": "/home/baskar/ansible/TCP"
+}
+Cleaning existing docker containers and images
+SSH password: 
+BECOME password[defaults to SSH password]: 
+[WARNING]: While constructing a mapping from /home/baskar/ansible_centos/job_docker_operations.yml, line 11, column 13, found a duplicate dict key (command). Using
+last defined value only.
+[WARNING]: While constructing a mapping from /home/baskar/ansible_centos/job_docker_operations.yml, line 11, column 13, found a duplicate dict key (args). Using last
+defined value only.
+[WARNING]: While constructing a mapping from /home/baskar/ansible_centos/job_docker_operations.yml, line 11, column 13, found a duplicate dict key (when). Using last
+defined value only.
+[WARNING]: While constructing a mapping from /home/baskar/ansible_centos/job_docker_operations.yml, line 11, column 13, found a duplicate dict key (ignore_errors).
+Using last defined value only.
+
+PLAY [docker operations playbook] *************************************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [build docker image for centos] **********************************************************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [build docker image for tcpserver] *******************************************************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [Run docker container for tcpserver] *****************************************************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [stop docker container for tcpserver] ****************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [remove docker container for tcpserver] **************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [sleep for 5 seconds for stop docker container for tcpserver to complete] ****************************************************************************************
+changed: [192.168.122.172]
+
+TASK [remove docker image tcpserver] **********************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [sleep for 5 seconds for remove docker image tcpserver to complete] **********************************************************************************************
+changed: [192.168.122.172]
+
+TASK [remove docker image centos] *************************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [sleep for 5 seconds for remove docker image centos to complete] *************************************************************************************************
+changed: [192.168.122.172]
+
+PLAY RECAP ************************************************************************************************************************************************************
+192.168.122.172            : ok=8    changed=7    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+
+Performing docker operations to pull 'centos' container image, build 'tcpserver' container image and run 'tcpserver_1' contianer'. Provide SSH password for authentication
+SSH password: 
+BECOME password[defaults to SSH password]: 
+[WARNING]: While constructing a mapping from /home/baskar/ansible_centos/job_docker_operations.yml, line 11, column 13, found a duplicate dict key (command). Using
+last defined value only.
+[WARNING]: While constructing a mapping from /home/baskar/ansible_centos/job_docker_operations.yml, line 11, column 13, found a duplicate dict key (args). Using last
+defined value only.
+[WARNING]: While constructing a mapping from /home/baskar/ansible_centos/job_docker_operations.yml, line 11, column 13, found a duplicate dict key (when). Using last
+defined value only.
+[WARNING]: While constructing a mapping from /home/baskar/ansible_centos/job_docker_operations.yml, line 11, column 13, found a duplicate dict key (ignore_errors).
+Using last defined value only.
+
+PLAY [docker operations playbook] *************************************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [build docker image for centos] **********************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [build docker image for tcpserver] *******************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [Run docker container for tcpserver] *****************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [stop docker container for tcpserver] ****************************************************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [remove docker container for tcpserver] **************************************************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [sleep for 5 seconds for stop docker container for tcpserver to complete] ****************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [remove docker image tcpserver] **********************************************************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [sleep for 5 seconds for remove docker image tcpserver to complete] **********************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [remove docker image centos] *************************************************************************************************************************************
+skipping: [192.168.122.172]
+
+TASK [sleep for 5 seconds for remove docker image centos to complete] *************************************************************************************************
+skipping: [192.168.122.172]
+
+PLAY RECAP ************************************************************************************************************************************************************
+192.168.122.172            : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+
+*************************************************************************
+Use Case completed for hosting a TCP Echo server within docker container.
+TCP Echo server is ready to listen on port 4305
+Use echocli (TCP Echo client) to communicate with TCP Echo server.
+*************************************************************************
+Installing prometheus and node_exporter for collecting TCP data.
+SSH password: 
+BECOME password[defaults to SSH password]: 
+
+PLAY [Prometheus installation, configuration and startup] *************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [remove existing prometheus installation] ************************************************************************************************************************
+[WARNING]: Consider using the file module with state=absent rather than running 'rm'.  If you need to use command because file is insufficient you can add 'warn:
+false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+changed: [192.168.122.172]
+
+TASK [create prometheus install directory] ****************************************************************************************************************************
+[WARNING]: Consider using the file module with state=directory rather than running 'mkdir'.  If you need to use command because file is insufficient you can add
+'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+changed: [192.168.122.172]
+
+TASK [copy the prometheus to dest server] *****************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [extract prometheus tar file] ************************************************************************************************************************************
+[WARNING]: Consider using the unarchive module rather than running 'tar'.  If you need to use command because unarchive is insufficient you can add 'warn: false' to
+this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+changed: [192.168.122.172]
+
+TASK [copy node exporter to dest server] ******************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [extract node_exporter tar file] *********************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [copy the prometheus.yml] ****************************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [remove prometheus and node_exporter service files] **************************************************************************************************************
+changed: [192.168.122.172] => (item={u'service_file': u'/etc/systemd/system/prometheus.service'})
+changed: [192.168.122.172] => (item={u'service_file': u'/etc/systemd/system/node_exporter.service'})
+
+TASK [copy prometheus service file] ***********************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [copy node_exporter service file] ********************************************************************************************************************************
+changed: [192.168.122.172]
+
+TASK [Start prometheus service] ***************************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [Start node_exporter service] ************************************************************************************************************************************
+ok: [192.168.122.172]
+
+PLAY RECAP ************************************************************************************************************************************************************
+192.168.122.172            : ok=13   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+Installation of prometheus and node_exporter for collecting TCP data completed.
+Installing grafana for visualizing TCP data.
+SSH password: 
+BECOME password[defaults to SSH password]: 
+
+PLAY [Grafana installation, configuration and startup] ****************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [copy the grafana repo file to dest server] **********************************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [install grafana from /etc/yum.repos.d/grafana.repo using yum] ***************************************************************************************************
+ok: [192.168.122.172]
+
+TASK [Start grafana service] ******************************************************************************************************************************************
+ok: [192.168.122.172]
+
+PLAY RECAP ************************************************************************************************************************************************************
+192.168.122.172            : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+Installation of grafana for visualizing TCP data completed.
+[baskar@oc6761813003 ansible_centos]$ 

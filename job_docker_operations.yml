@@ -1,0 +1,94 @@
+---
+        - name:  docker operations playbook
+          hosts: rhel_vm_host
+          become: yes
+          become_method: sudo
+          vars:
+                build_arg: "build"
+        
+          tasks:
+
+          - name: build docker image for centos
+            command: /usr/bin/docker pull centos
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when:  build_arg == "build"
+            ignore_errors: true
+
+            command: /usr/bin/docker pull centos
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "build"
+            ignore_errors: true
+
+          - name: build docker image for tcpserver
+            command: /usr/bin/docker build -t tcpserver /home/baskar/ansible/TCP/app
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "build"
+            ignore_errors: true
+
+          - name: Run docker container for tcpserver
+            command: /usr/bin/docker run --network host --name tcpserver_1 -d tcpserver
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "build"
+            ignore_errors: true
+
+          - name: stop docker container for tcpserver
+            command: /usr/bin/docker container stop tcpserver_1 
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "destroy"
+            ignore_errors: true
+
+          - name: remove docker container for tcpserver
+            command: /usr/bin/docker container rm tcpserver_1 
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "destroy"
+            ignore_errors: true
+
+          - name: sleep for 5 seconds for stop docker container for tcpserver to complete
+            command: sleep 5
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "destroy"
+            ignore_errors: true
+
+          - name: remove docker image tcpserver
+            command: /usr/bin/docker image rm -f tcpserver
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "destroy"
+            ignore_errors: true
+
+          - name: sleep for 5 seconds for remove docker image tcpserver to complete
+            command: sleep 5
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "destroy"
+            ignore_errors: true
+
+          - name: remove docker image centos
+            command: /usr/bin/docker image rm -f docker.io/centos
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "destroy"
+            ignore_errors: true
+
+
+          - name: sleep for 5 seconds for remove docker image centos to complete
+            command: sleep 5
+            args:
+                chdir: /home/baskar/ansible/TCP/app
+            when: build_arg == "destroy"
+            ignore_errors: true
+
+#          - name: remove docker 
+#            yum:
+#              name: docker
+#              state: removed
+#            when: build_arg == "destroy"
+
+
