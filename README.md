@@ -6,11 +6,11 @@ BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work
 [![DISSERTATION VIDEO](https://i9.ytimg.com/vi/LHNCHVT70Zk/mq1.jpg?sqp=CLT2mYQG&rs=AOn4CLDrQJ6y2QzfrJOTKEy4C2m8cfU_Ag)](https://youtu.be/LHNCHVT70Zk "DEMO-CSI-ZG628T-Dissertation") <br>
 
 Refer to the dissertation documentation
-https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/doc/FinalReport/soft-submit/FinalReport.pdf
+https://github.com/baskardotbalsu/SRE/blob/2019HT66015_CSI-ZG628T-Dissertation/doc/FinalReport/soft-submit/FinalReport.pdf
 for complete details of the project. <br>
 
 # Automation Solution is now tested with centos7.0
-Test results available [[here]](https://github.com/2019HT66015/CSI-ZG628T-Dissertation/blob/dev_SRE_Ansible_study/results/invoking_main_script_centos7.0.txt "Test results centos7.0") <br>
+Test results available [[here]](https://github.com/baskardotbalsu/SRE/blob/2019HT66015_CSI-ZG628T-Dissertation/results/invoking_main_script_centos7.0.txt "Test results centos7.0") <br>
 
 # ABSTRACT
 
