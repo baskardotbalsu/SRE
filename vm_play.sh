@@ -21,7 +21,8 @@ echo "VM OS - RHEL 7"
 sleep 2
 echo "*****************************************************"
 
-if [ `my_ansible_virt_rhel status | grep status | awk -F"\"status\": " '{print $2}' | sed -e "s/\"//g"` != "running" ]
+#if [ `my_ansible_virt_rhel status | grep status | awk -F"\"status\": " '{print $2}' | sed -e "s/\"//g"` != "running" ]
+if [ `ansible 127.0.0.1 -m virt -a "name=centos7.0 command=status" | grep status | awk -F"\"status\": " '{print $2}' | sed -e "s/\"//g"` != "running" ]
 then
 	my_ansible_virt_rhel start
 
