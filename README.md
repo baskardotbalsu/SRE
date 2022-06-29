@@ -1,5 +1,5 @@
 # CSI-ZG628T-Dissertation
-BIT Pilani M.Tech 2nd year 2nd Sem Dissertation work
+BITS Pilani M.Tech 2nd year 2nd Sem Dissertation Work
 
 # DISSERTATION DEMONSTRATION VIDEO
 ***Click the video link shown below***<br><br>
